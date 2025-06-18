@@ -39,8 +39,8 @@ if (!$user) {
                 <h1>EsadeMoves</h1>
             </div>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="about.php">About</a></li>
                 <li><a href="listings.php">Housing</a></li>
                 <li><a href="profile.php">My Profile</a></li>
                 <li><a href="logout.php">Logout</a></li>
@@ -63,7 +63,7 @@ if (!$user) {
 
             <div class="profile-container">
                 <div class="profile-info">
-                    <h3>Personal Information</h3>
+                    <h3><br>Personal Information</h3>
                     <form action="update_profile.php" method="POST" class="profile-form">
                         <div class="form-group">
                             <label for="username">Username:</label>
@@ -110,10 +110,10 @@ if (!$user) {
 
                 <?php if ($user['user_type'] === 'landlord'): ?>
                 <div class="my-listings">
-                    <h3>My Listings</h3>
+                    <h3><br>My Listings</h3>
                     <a href="create_listing.php" class="btn">Create New Listing</a>
                     <?php
-                    $listings_query = "SELECT * FROM housing_listings WHERE user_id = " . $_SESSION['user_id'] . " ORDER BY created_at DESC";
+                    $listings_query = "SELECT * FROM housing_listings WHERE user_id = " . intval($_SESSION['user_id']) . " ORDER BY id DESC";
                     $listings_result = mysqli_query($conn, $listings_query);
                     
                     if (!$listings_result) {
@@ -128,7 +128,6 @@ if (!$user) {
                                         <p class="location"><?php echo htmlspecialchars($listing['location']); ?></p>
                                         <p class="price">€<?php echo number_format($listing['price'], 2); ?>/month</p>
                                         <div class="listing-actions">
-                                            <a href="edit_listing.php?id=<?php echo $listing['id']; ?>" class="btn">Edit</a>
                                             <a href="delete_listing.php?id=<?php echo $listing['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this listing?')">Delete</a>
                                         </div>
                                     </div>
@@ -145,9 +144,10 @@ if (!$user) {
         </section>
     </main>
 
-    <footer>
+	<footer>
         <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> EsadeMoves. All rights reserved.</p>
+            <p> EsadeMoves | Team 5 </p>
+			<p> All rights reserved.</p>
         </div>
     </footer>
 </body>

@@ -25,7 +25,7 @@ if (isset($_GET['error'])) {
         <input class="controls" type="password" name="password" placeholder="Enter your password" required>
         <input class="botons" type="submit" value="Login">
         <p><a href="register.php">Don't have an account? Register here</a></p>
-        <p><a href="index.html">Return to Homepage</a></p>
+        <p><a href="home.php">Return to Homepage</a></p>
     </form>
 </body>
 </html> 

@@ -45,11 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (empty($errors)) {
         try {
-            $stmt = $pdo->prepare("INSERT INTO housing_listings (user_id, title, description, location, price, bedrooms, bathrooms) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$_SESSION['user_id'], $title, $description, $location, $price, $bedrooms, $bathrooms]);
+            $stmt = $conn->prepare("INSERT INTO housing_listings (user_id, title, description, location, price, bedrooms, bathrooms) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("isssdii", $_SESSION['user_id'], $title, $description, $location, $price, $bedrooms, $bathrooms);
+            $stmt->execute();
             
             $_SESSION['listing_message'] = "Listing created successfully!";
-            header("Location: profile.php");
+            header("Location: listings.php");
             exit();
         } catch (PDOException $e) {
             error_log("Error creating listing: " . $e->getMessage());

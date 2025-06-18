@@ -73,8 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $username;
                 $_SESSION['user_type'] = $user_type;
                 
-                // Redirect to index page
-                header("Location: index.php");
+                header("Location: home.php");
                 exit();
             } else {
                 error_log("Registration error: " . mysqli_error($conn));

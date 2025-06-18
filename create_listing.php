@@ -1,11 +1,3 @@
-<?php
-session_start();
-require_once 'includes/db.php';
-
-// Check if user is logged in and is a landlord
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'landlord') {
-    header("Location: login.html");
-    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -23,8 +15,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'landlord') {
                 <h1>EsadeMoves</h1>
             </div>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="about.php">About</a></li>
                 <li><a href="listings.php">Housing</a></li>
                 <li><a href="profile.php">My Profile</a></li>
                 <li><a href="logout.php">Logout</a></li>
@@ -81,9 +73,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'landlord') {
         </section>
     </main>
 
-    <footer>
+	<footer>
         <div class="container">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> EsadeMoves. All rights reserved.</p>
+            <p> EsadeMoves | Team 5 </p>
+			<p> All rights reserved.</p>
         </div>
     </footer>
 </body>

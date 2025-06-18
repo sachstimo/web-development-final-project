@@ -24,12 +24,11 @@ $user = mysqli_fetch_assoc($result);
 
 // Verify password
 if (password_verify($password, $user['password'])) {
-    // Set session variables
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
     $_SESSION['user_type'] = $user['user_type'];
     
-    header("Location: index.php");
+    header("Location: home.php");
 } else {
     header("Location: login.php?error=1");
 }

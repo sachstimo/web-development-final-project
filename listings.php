@@ -5,9 +5,7 @@ require_once 'includes/db.php';
 // Get all available listings
 $query = "SELECT h.*, u.username, u.email 
           FROM housing_listings h 
-          JOIN users u ON h.user_id = u.id 
-          WHERE h.is_available = 1 
-          ORDER BY h.created_at DESC";
+          JOIN users u ON h.user_id = u.id";
 
 $result = mysqli_query($conn, $query);
 
@@ -36,8 +34,8 @@ if (!$result) {
                 <h1>EsadeMoves</h1>
             </div>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="about.php">About</a></li>
                 <li><a href="listings.php">Housing</a></li>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li><a href="profile.php">My Profile</a></li>
@@ -85,9 +83,10 @@ if (!$result) {
         </section>
     </main>
 
-    <footer>
+	<footer>
         <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> EsadeMoves. All rights reserved.</p>
+            <p> EsadeMoves | Team 5 </p>
+			<p> All rights reserved.</p>
         </div>
     </footer>
 </body>
